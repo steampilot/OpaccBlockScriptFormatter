@@ -60,3 +60,6 @@ BlockScript ist TypeScript-ähnlich mit folgenden Besonderheiten:
 - Code-Änderungen mit Tests validieren
 - BlockScript-Syntax beachten
 - Deutsche Kommentare und Dokumentation verwenden
+- **WICHTIG: Recherchieren, nicht raten** - Verwende get_vscode_api, fetch_webpage und andere Tools zur Recherche, anstatt zu spekulieren
+- **VS Code language-configuration.json Schema**: Erfordert `"lineComment": { "comment": "//" }` (Objekt-Format, nicht String) - Dies kann vom offiziellen Schema abweichen
+- Immer die Quelle/Doku überprüfen, bevor Änderungen vorgenommen werden
