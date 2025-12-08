@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "BlockScript",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#keywords" },
+    { "include": "#operators" },
+    { "include": "#numbers" },
+    { "include": "#functions" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.blockscript",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.blockscript",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.blockscript",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.blockscript",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.blockscript",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "name": "constant.character.escape.blockscript",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.blockscript",
+          "match": "\\b(if|else|while|for|function|return|var|val|const|using|true|false|null)\\b"
+        },
+        {
+          "name": "keyword.other.blockscript",
+          "match": "\\b(BlockServices|XRES|XTAB|XARR|XFAS)\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.assignment.blockscript",
+          "match": ":="
+        },
+        {
+          "name": "keyword.operator.comparison.blockscript",
+          "match": "(==|<>|!=|<=|>=|<|>)"
+        },
+        {
+          "name": "keyword.operator.arithmetic.blockscript",
+          "match": "(\\+|-|\\*|/|%)"
+        },
+        {
+          "name": "keyword.operator.logical.blockscript",
+          "match": "(&&|\\|\\||!)"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.blockscript",
+          "match": "\\b(\\d+\\.\\d+|\\d+)\\b"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "entity.name.function.blockscript",
+          "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=\\()"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.blockscript"
+}

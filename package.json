@@ -15,7 +15,8 @@
     "Formatters"
   ],
   "activationEvents": [
-    "onLanguage:blockscript"
+    "onLanguage:blockscript",
+    "onCommand:blockscript-formatter.format"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -29,8 +30,10 @@
         ],
         "extensions": [
           ".fbs",
+          ".fbl"
+        ],
+        "filenames": [
           ".FBS",
-          ".fbl",
           ".FBL"
         ],
         "configuration": "./language-configuration.json"
@@ -45,8 +48,15 @@
     "keybindings": [
       {
         "command": "editor.action.formatDocument",
-        "key": "ctrl+alt+f",
+        "key": "shift+alt+f",
         "when": "editorLangId == blockscript"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "blockscript",
+        "scopeName": "source.blockscript",
+        "path": "./syntaxes/blockscript.tmLanguage.json"
       }
     ]
   },

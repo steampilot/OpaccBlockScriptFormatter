@@ -1,0 +1,69 @@
+﻿// ------------------------------------------------------------------------------------------------------
+// <ScriptTitle>
+// ------------------------------------------------------------------------------------------------------
+// Dateiname: Untitled-1
+// Kunde:     <CustomerName>
+// Kontext:   <Context>
+// Autor:     OPACC Software AG, Luzern - <CreatorName>
+// ------------------------------------------------------------------------------------------------------
+// Erstellt:  28.08.2024 / <CreatorScut>
+// Geändert:  <Datum> / <Kürzel> - <Kurzbeschreibung>
+// ------------------------------------------------------------------------------------------------------
+{
+    // using "LibraryName.FBL"
+
+    function Main() : void
+    {
+        SYS("MSG INFO START MAIN")
+        // start coding here
+        SYS("MSG INFO END MAIN")
+	}
+
+    Main()
+
+    function GetInfoScript() : void
+    {
+        XFAS.AddHeads('SupportsScreenOutput','SupportsBoArgs','SupportedBoType','MlsKey')
+        XFAS.SetCol('SupportsScreenOutput', '0')
+        XFAS.SetCol('SupportsBoArgs', '0')
+        XFAS.SetCol('SupportedBoType', 'Addr')
+        XFAS.SetCol('MlsKey', 'U.'+XCNT.GetScriptName())
+    }
+    function GetInfoScriptArg() : void
+    {
+        XFAS.AddHeads('Argument','StateCd','DataTypeCd','Format','RelationshipCd','RelatedObject','RelatedIndex','RelatedConstraint','ConstraintType','CheckExpression','DefaultValue','EntryMode','WithPrevious','MlsKey')
+        // ------------------------------------------------------------------------------------------------------
+        // Argument-Definition
+        XFAS.SetCol('Argument',			'ScriptArg1')
+        XFAS.SetCol('StateCd',			'1')		// 0: passiv, 1: active
+        XFAS.SetCol('DataTypeCd',		'A')		// A: AlphaAll, X: AlphaUC, R: NumAll, N: NumNotNeg, D: Date, H: Time, B: Boolean, T: Text
+        XFAS.SetCol('Format',			'100')
+        XFAS.SetCol('RelationshipCd',	'0')		// 0: No, 1: Bo, 1S: BoSet, 2: BoOption, 3: Code, 4: CodeOption, 5: Range, 6: RangeOption, 7: ApsKeyword, 8: ApsKeywordOption, I: InstallationFile, J: FileStorage
+        XFAS.SetCol('RelatedObject',	' ')			// e.g.: No, Bo, Code, ApsKeyword, InstallationFile, FileStorage
+        XFAS.SetCol('RelatedIndex',		'')
+        XFAS.SetCol('RelatedConstraint','')
+        XFAS.SetCol('ConstraintType',	'')
+        XFAS.SetCol('CheckExpression',	'')
+        XFAS.SetCol('DefaultValue',		'DefaultValue')
+        XFAS.SetCol('EntryMode',		'0')		// 0: Default, 1: Must, 2: Locked
+        XFAS.SetCol('WithPrevious',		'0')		// 0: on new line, 1: on same line
+        XFAS.SetCol('MlsKey',			'ScriptArg1')
+    }
+    function GetInfoScriptCol() : void
+    {
+        XFAS.AddHeads('Column','DataTypeCd','Format','RelationshipCd','RelatedObject','RelatedIndex','RelatedConstraint','AdditionalInfo','OnDemand','MlsKey')
+        // ------------------------------------------------------------------------------------------------------
+        // Rückgabespalten
+        XFAS.NewRow()
+        XFAS.SetCol('Column',			'ScriptCol1')
+        XFAS.SetCol('DataTypeCd',		'A')			// A: AlphaAll, X: AlphaUC, R: NumAll, N: NumNotNeg, D: Date, H: Time, B: Boolean, T: Text
+        XFAS.SetCol('Format',			'100')
+        XFAS.SetCol('RelationshipCd',	'0')			// 0: No, 1: Bo, 1S: BoSet, 2: BoOption, 3: Code, 4: CodeOption, 5: Range, 6: RangeOption, 7: ApsKeyword, 8: ApsKeywordOption, I: InstallationFile, J: FileStorage
+        XFAS.SetCol('RelatedObject',	' ')			// e.g.: No, Bo, Code, ApsKeyword, InstallationFile, FileStorage
+        XFAS.SetCol('RelatedIndex',		'')
+        XFAS.SetCol('RelatedConstraint','')
+        XFAS.SetCol('AdditionalInfo',	'')
+        XFAS.SetCol('OnDemand',			'0')
+        XFAS.SetCol('MlsKey',			'ScriptCol1')
+    }
+}

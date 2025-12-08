@@ -4,40 +4,46 @@ Automatischer Code-Formatter für BlockScript-Dateien (.FBS/.FBL) in VS Code.
 
 ## Features
 
-- 🎨 **Automatische Formatierung** via `Ctrl+Alt+F` oder "Format Document"
-- 📏 **Intelligente Einrückung** (2 oder 4 Spaces, konsistent)
+- 🎨 **Automatische Formatierung** via `Shift+Alt+F` (VS Code Standard)
+- 📏 **Intelligente Einrückung** (2 Spaces, konsistent)
 - ✨ **Spacing um Operatoren** (`:=`, `=`, `==`, `<>`, etc.)
-- 🔤 **Konsistente Kommentar-Formatierung**
-- 📋 **Leerzeilen-Management** (zwischen Funktionen, nach Imports)
+- 🔤 **Konsistente Kommentar-Formatierung** (`//` mit Space)
+- 📋 **Leerzeilen-Management** (zwischen Funktionen, keine doppelten Leerzeilen)
 - 🧩 **BlockScript-Syntax Support** (XRES, XTAB, XARR, XFAS)
+- 📝 **TextMate Grammar** für Syntax-Highlighting
 
-## Installation
+## Installation für Sysop
 
-1. Extension aus dem VS Code Marketplace installieren oder lokal bauen
-2. Shortcut `Ctrl+Alt+F` zum Formatieren verwenden
-
-## Development
-
-### Setup
+### Option 1: Aus Repository klonen und bauen
 ```bash
+git clone https://git01-lab.opacc.ch/turm/blockscript-formatter.git
+cd blockscript-formatter
 npm install
 npm run compile
-```
-
-### Development Mode
-```bash
-npm run watch
-```
-
-### Testen
-```bash
-npm test
-```
-
-### Package erstellen
-```bash
 npm run package
 ```
+
+Das erstellt eine `.vsix`-Datei für die Distribution.
+
+### Option 2: Direkt als Entwicklungs-Extension installieren
+```bash
+code --install-extension blockscript-formatter.vsix
+```
+
+### Option 3: In VS Code Extensions-Verzeichnis platzieren
+```
+Windows: %USERPROFILE%\.vscode\extensions\
+Linux: ~/.vscode/extensions/
+macOS: ~/.vscode/extensions/
+```
+
+## Verwendung
+
+## Verwendung
+
+Öffne eine BlockScript-Datei (`.fbs` oder `.fbl`) und drücke:
+- **Shift+Alt+F** zum Formatieren des gesamten Dokuments
+- **Shift+Alt+F** mit Selektion zum Formatieren nur des ausgewählten Bereichs
 
 ## Projektstruktur
 
