@@ -23,8 +23,8 @@
     ["'", "'"]
   ],
   "indentationRules": {
-    "increaseIndentPattern": "^\\s*[{\\[].*$",
-    "decreaseIndentPattern": "^\\s*[}\\]]"
+    "increaseIndentPattern": "^\\s*[{\\[\\(].*$",
+    "decreaseIndentPattern": "^\\s*[}\\]\\)]"
   },
   "wordPattern": "(-?\\d*\\.\\d\\w*)|([^`~!@#$%^&*()\\-=+\\[{\\]}\\\\|;:'\",.<>/?\\s]+)"
 }
