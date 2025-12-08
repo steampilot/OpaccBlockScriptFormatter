@@ -1,0 +1,81 @@
+{
+  "name": "turm-blockscript-formatter",
+  "displayName": "BlockScript Formatter",
+  "description": "Automatischer Code-Formatter für BlockScript (.FBS/.FBL) Dateien",
+  "version": "0.1.0",
+  "publisher": "TURM",
+  "repository": {
+    "type": "git",
+    "url": "https://git01-lab.opacc.ch/turm/blockscript-formatter.git"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Formatters"
+  ],
+  "activationEvents": [
+    "onLanguage:blockscript"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "blockscript",
+        "aliases": [
+          "BlockScript",
+          "FBS",
+          "FBL"
+        ],
+        "extensions": [
+          ".fbs",
+          ".FBS",
+          ".fbl",
+          ".FBL"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "blockscript-formatter.format",
+        "title": "Format BlockScript Document"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "editor.action.formatDocument",
+        "key": "ctrl+alt+f",
+        "when": "editorLangId == blockscript"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --platform=node --target=node16",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.80.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.6",
+    "@typescript-eslint/parser": "^5.59.6",
+    "@vscode/test-electron": "^2.3.2",
+    "esbuild": "^0.17.11",
+    "eslint": "^8.40.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.2",
+    "vsce": "^2.15.0"
+  },
+  "dependencies": {}
+}
