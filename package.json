@@ -1,13 +1,18 @@
 {
-  "name": "turm-blockscript-formatter",
-  "displayName": "BlockScript Formatter",
-  "description": "Automatischer Code-Formatter für BlockScript (.FBS/.FBL) Dateien",
+  "name": "opacc-blockscript-formatter",
+  "displayName": "Opacc BlockScript Formatter",
+  "description": "Automatischer Code-Formatter für BlockScript (.FBS/.FBL) Dateien mit Unterstützung für Opacc ToolChain",
   "version": "0.1.0",
-  "publisher": "TURM",
+  "publisher": "steampilot",
+  "author": "steampilot",
   "repository": {
     "type": "git",
-    "url": "https://git01-lab.opacc.ch/turm/blockscript-formatter.git"
+    "url": "https://github.com/steampilot/OpaccBlockScriptFormatter.git"
   },
+  "bugs": {
+    "url": "https://github.com/steampilot/OpaccBlockScriptFormatter/issues"
+  },
+  "homepage": "https://github.com/steampilot/OpaccBlockScriptFormatter#readme",
   "engines": {
     "vscode": "^1.80.0"
   },

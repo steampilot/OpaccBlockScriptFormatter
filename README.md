@@ -1,6 +1,11 @@
-# BlockScript Formatter Extension
+# Opacc BlockScript Formatter Extension
 
 Automatischer Code-Formatter für BlockScript-Dateien (.FBS/.FBL) in VS Code.
+
+Eine VS Code Extension zur automatischen Formatierung von Opacc BlockScript Code mit konsistenten Einrückungen, Operator-Spacing und Kommentar-Formatierung.
+
+**🔗 Repository**: https://github.com/steampilot/OpaccBlockScriptFormatter
+**🛠️ Entwickler**: steampilot
 
 ## Features
 
@@ -87,12 +92,12 @@ git checkout -b feature/neue-funktion
 git add .
 git commit -m "feat: Beschreibung der Änderung"
 
-# Zu develop pushen und MR erstellen
+# Zu dev pushen und PR erstellen
 git push origin feature/neue-funktion
 ```
 
 ## Repository
 
-- **URL**: git01-lab.opacc.ch/turm/blockscript-formatter
-- **Main Branch**: main
-- **Development Branch**: develop
+- **URL**: https://github.com/steampilot/OpaccBlockScriptFormatter
+- **Main Branch**: main (Release)
+- **Development Branch**: dev (Aktive Entwicklung)
