@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "publisher": "steampilot",
   "author": "steampilot",
+  "icon": "media/icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/steampilot/OpaccBlockScriptFormatter.git"

@@ -1,0 +1,13 @@
+.vscode
+.git
+.gitignore
+node_modules
+out/test
+src/test
+*.vsix
+tsconfig.json
+.eslintrc.json
+.github
+CONTRIBUTING.md
+INSTALL.md
+JR_APS-BLOCKSCRIPT-TEMPLATE.FBS

@@ -1,8 +1,10 @@
-# Opacc BlockScript Formatter Extension
+# BlockScript Formatter Extension
+
+![BlockScript Formatter Hero](media/hero-banner.png)
 
 Automatic code formatter for BlockScript files (.FBS/.FBL) in VS Code.
 
-A VS Code extension for automatic formatting of Opacc BlockScript code with consistent indentation, operator spacing, and comment formatting.
+A VS Code extension for automatic formatting of BlockScript code with consistent indentation, operator spacing, and comment formatting.
 
 **🔗 Repository**: https://github.com/steampilot/OpaccBlockScriptFormatter
 **🛠️ Developer**: steampilot
@@ -16,6 +18,30 @@ A VS Code extension for automatic formatting of Opacc BlockScript code with cons
 - 📋 **Blank Line Management** (between functions, no duplicate blank lines)
 - 🧩 **BlockScript Syntax Support** (XRES, XTAB, XARR, XFAS)
 - 📝 **TextMate Grammar** for syntax highlighting
+
+## Before & After
+
+### Before Formatting
+```blockscript
+function calculateTotal():number{
+var sum:=0
+for(var i:=0;i<items.length;i:=i+1){
+sum:=sum+items[i]
+}
+return sum
+}
+```
+
+### After Formatting
+```blockscript
+function calculateTotal() : number {
+  var sum := 0
+  for (var i := 0; i < items.length; i := i + 1) {
+    sum := sum + items[i]
+  }
+  return sum
+}
+```
 
 ## Installation
 
