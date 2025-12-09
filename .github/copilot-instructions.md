@@ -1,65 +1,65 @@
 # BlockScript Formatter Extension - Copilot Instructions
 
-## Projektübersicht
-VS Code Extension für automatische Code-Formatierung von BlockScript-Dateien (.FBS/.FBL).
+## Project Overview
+VS Code Extension for automatic code formatting of BlockScript files (.FBS/.FBL).
 - **Language**: TypeScript
 - **Type**: VS Code Formatter Extension
 - **Package Manager**: npm
-- **Trigger**: Ctrl+Alt+F oder Format Document
+- **Trigger**: Ctrl+Alt+F or Format Document
 
-## BlockScript Syntax-Grundlagen
-BlockScript ist TypeScript-ähnlich mit folgenden Besonderheiten:
-- Klammern-Syntax wie TypeScript
-- Indentation: 2 oder 4 Spaces (konsistent halten)
-- Funktionen: `function name() : returnType { ... }`
+## BlockScript Syntax Basics
+BlockScript is TypeScript-like with the following special features:
+- Bracket syntax like TypeScript
+- Indentation: 2 or 4 spaces (keep consistent)
+- Functions: `function name() : returnType { ... }`
 - Services: `var result := BlockServices_GetBo(...)`
-- XRES/XTAB/XARR/XFAS Datenstrukturen
+- XRES/XTAB/XARR/XFAS data structures
 
-## Formatierungs-Regeln
+## Formatting Rules
 
 ### Indentation
-- Standard: 2 Spaces pro Level
-- Keine Tabs
-- Konsistente Einrückung in Funktionen, Schleifen, Bedingungen
+- Standard: 2 spaces per level
+- No tabs
+- Consistent indentation in functions, loops, conditionals
 
 ### Spacing
-- Um Operatoren: ` := `, ` = `, ` == `, ` <> `
-- Nach Keywords: `if (`, `for (`, `while (`
-- Vor öffnenden Klammern bei Funktionen: `function name()`
-- Keine Spaces in leeren Klammern
+- Around operators: ` := `, ` = `, ` == `, ` <> `
+- After keywords: `if (`, `for (`, `while (`
+- Before opening brackets in functions: `function name()`
+- No spaces in empty brackets
 
-### Leerzeilen
-- Eine Leerzeile zwischen Funktionen
-- Keine mehrfachen Leerzeilen hintereinander
-- Leerzeile nach Imports/Using-Statements
+### Blank Lines
+- One blank line between functions
+- No multiple blank lines in a row
+- Blank line after imports/using statements
 
-### Kommentare
-- `// Kommentare` mit Leerzeichen nach //
-- Mehrzeilig: `/* ... */`
-- German language preferred
+### Comments
+- `// Comments` with space after //
+- Multi-line: `/* ... */`
+- English language preferred
 
 ## Development Setup
-1. `npm install` - Dependencies installieren
-2. `npm run compile` - TypeScript kompilieren
-3. `npm test` - Tests ausführen
-4. `npm run package` - VSIX-Package erstellen
+1. `npm install` - Install dependencies
+2. `npm run compile` - Compile TypeScript
+3. `npm test` - Run tests
+4. `npm run package` - Create VSIX package
 
-## Extension-Struktur
-- `src/extension.ts` - Hauptdatei, DocumentFormattingEditProvider
-- `src/formatter.ts` - Formatter-Logik für BlockScript
-- `package.json` - Extension-Manifest
-- `.vscodeignore` - Exclude-Patterns für Package
+## Extension Structure
+- `src/extension.ts` - Main file, DocumentFormattingEditProvider
+- `src/formatter.ts` - Formatter logic for BlockScript
+- `package.json` - Extension manifest
+- `.vscodeignore` - Exclude patterns for package
 
-## Git-Repository
-- **Upstream**: git01-lab.opacc.ch/turm/blockscript-formatter
+## Git Repository
+- **Repository**: https://github.com/steampilot/OpaccBlockScriptFormatter
 - **Branch**: main (Production) / develop (Development)
-- **Commits**: Mit aussagekräftigen Nachrichten auf Deutsch
+- **Commits**: Use meaningful messages in English
 
-## KI-Agent Richtlinien
-- Keine automatischen `git push` ohne Bestätigung
-- Code-Änderungen mit Tests validieren
-- BlockScript-Syntax beachten
-- Deutsche Kommentare und Dokumentation verwenden
-- **WICHTIG: Recherchieren, nicht raten** - Verwende get_vscode_api, fetch_webpage und andere Tools zur Recherche, anstatt zu spekulieren
-- **VS Code language-configuration.json Schema**: Erfordert `"lineComment": { "comment": "//" }` (Objekt-Format, nicht String) - Dies kann vom offiziellen Schema abweichen
-- Immer die Quelle/Doku überprüfen, bevor Änderungen vorgenommen werden
+## AI Agent Guidelines
+- No automatic `git push` without confirmation
+- Validate code changes with tests
+- Follow BlockScript syntax rules
+- Use English for comments and documentation
+- **IMPORTANT: Research, don't guess** - Use get_vscode_api, fetch_webpage and other tools for research instead of speculating
+- **VS Code language-configuration.json Schema**: Requires `"lineComment": { "comment": "//" }` (object format, not string) - This may differ from the official schema
+- Always check the source/documentation before making changes

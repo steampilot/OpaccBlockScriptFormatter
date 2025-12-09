@@ -1,92 +1,92 @@
-# Beitragen zur BlockScript Formatter Extension
+# Contributing to BlockScript Formatter Extension
 
-## Entwicklungsrichtlinien
+## Development Guidelines
 
 ### Git Workflow
 
 1. **Main Branch**: Productive Release Branch
-2. **Dev Branch**: Development Branch (Standard)
-3. **Feature Branches**: `feature/beschreibung`
-4. **Bugfix Branches**: `bugfix/beschreibung`
+2. **Develop Branch**: Development Branch (Standard)
+3. **Feature Branches**: `feature/description`
+4. **Bugfix Branches**: `bugfix/description`
 
-### Commit-Nachrichtenformat
+### Commit Message Format
 
 ```
-<type>: <beschreibung>
+<type>: <description>
 
-<optionale detaillierte Erklärung>
+<optional detailed explanation>
 
-Fixes #<issue-number> (falls zutreffend)
+Fixes #<issue-number> (if applicable)
 ```
 
 **Types**:
-- `feat`: Neue Funktionalität
-- `fix`: Bugfix
-- `docs`: Dokumentation
-- `style`: Code-Stil (ohne Logik-Änderung)
-- `refactor`: Code-Umstrukturierung
-- `test`: Test-Hinzufügungen
+- `feat`: New functionality
+- `fix`: Bug fix
+- `docs`: Documentation
+- `style`: Code style (no logic change)
+- `refactor`: Code restructuring
+- `test`: Test additions
 - `chore`: Build/Dependencies/Tooling
 
-### Beispiele
+### Examples
 
 ```bash
 # Feature
-git commit -m "feat: Unterstützung für XFAS-Strukturformatierung"
+git commit -m "feat: Add support for XFAS structure formatting"
 
 # Bugfix
-git commit -m "fix: Falsche Indentierung bei verschachtelten Blöcken"
+git commit -m "fix: Incorrect indentation in nested blocks"
 
-# Dokumentation
-git commit -m "docs: Installation für Linux dokumentiert"
+# Documentation
+git commit -m "docs: Document Linux installation"
 ```
 
-## Code-Stil
+## Code Style
 
 ### TypeScript/JavaScript
 
 - **2 Spaces** Indentation
-- **Semicolons** nicht verwenden (BlockScript-Style)
-- **console.log()** vor Release entfernen
-- **Type annotations** verwenden wo möglich
-- **English** für Code, **Deutsch** für Kommentare
+- **No Semicolons** (BlockScript Style)
+- **Remove console.log()** before release
+- **Use type annotations** where possible
+- **English** for code, **English** for comments
 
-### Formatter-Logik
+### Formatter Logic
 
-Die Formatter-Regeln sind in `src/formatter.ts` definiert. Neue Regeln hinzufügen:
+Formatter rules are defined in `src/formatter.ts`. To add new rules:
 
-1. Neue Methode in `BlockScriptFormattingProvider` erstellen
-2. In `format()` Methode aufrufen
-3. Unit-Tests hinzufügen
-4. Dokumentation in README aktualisieren
+1. Create new method in `BlockScriptFormattingProvider`
+2. Call it in `format()` method
+3. Add unit tests
+4. Update documentation in README
 
-### Beispiel: Neue Formatierungs-Regel
+### Example: New Formatting Rule
 
 ```typescript
 private formatNewRule(text: string): string {
-  // Implementierung
+  // Implementation
   return text;
 }
 
 public format(text: string): string {
-  // ... bestehende Regeln ...
+  // ... existing rules ...
   text = this.formatNewRule(text);
-  // ... weitere Regeln ...
+  // ... further rules ...
   return text;
 }
 ```
 
 ## Testing
 
-### Unit-Tests ausführen
+### Run Unit Tests
 
 ```bash
 npm test
 ```
 
-### Test-Datei erstellen
+### Create Test File
 
-Neue Test-Datei in `src/test/` mit `.test.ts` Suffix:
+New test file in `src/test/` with `.test.ts` suffix:
 
 ```typescript
 import * as assert from 'assert';
@@ -110,41 +110,41 @@ suite('BlockScript Formatter Tests', () => {
 
 ## Development Setup
 
-### Debug-Session starten
+### Start Debug Session
 
 ```bash
 npm run compile
-# Dann F5 in VS Code drücken
+# Then press F5 in VS Code
 ```
 
-### Watch-Modus (Auto-Recompile)
+### Watch Mode (Auto-Recompile)
 
 ```bash
 npm run watch
 ```
 
-### ESLint-Check
+### ESLint Check
 
 ```bash
 npm run lint
 ```
 
-## Neue Funktionalität hinzufügen
+## Adding New Features
 
-1. **Branch erstellen**: `git checkout -b feature/neue-feature`
-2. **Implementieren**: Code schreiben + Tests
-3. **Testen**: `npm test` und F5 Debug
-4. **Commit**: `git commit -m "feat: Beschreibung"`
-5. **Push**: `git push origin feature/neue-feature`
-6. **Merge Request** erstellen auf dev-Branch
+1. **Create branch**: `git checkout -b feature/new-feature`
+2. **Implement**: Write code + tests
+3. **Test**: `npm test` and F5 debug
+4. **Commit**: `git commit -m "feat: Description"`
+5. **Push**: `git push origin feature/new-feature`
+6. **Create Pull Request** to develop branch
 
-## Versionierung
+## Versioning
 
-Folge [Semantic Versioning](https://semver.org/):
+Follow [Semantic Versioning](https://semver.org/):
 
-- **Major** (X.0.0): Inkompatible Änderungen
-- **Minor** (0.X.0): Neue Features (abwärts-kompatibel)
-- **Patch** (0.0.X): Bugfixes
+- **Major** (X.0.0): Incompatible changes
+- **Minor** (0.X.0): New features (backwards compatible)
+- **Patch** (0.0.X): Bug fixes
 
 Update in `package.json`:
 ```json
@@ -153,22 +153,22 @@ Update in `package.json`:
 }
 ```
 
-## Dokumentation aktualisieren
+## Update Documentation
 
-Bei neuen Features oder Änderungen:
-- README.md aktualisieren
-- INSTALL.md ergänzen (falls Installationsschritte ändern)
-- Code-Kommentare hinzufügen
-- Git-Commit mit `docs:` Prefix
+For new features or changes:
+- Update README.md
+- Add to INSTALL.md (if installation steps change)
+- Add code comments
+- Commit with `docs:` prefix
 
 ## Performance & Debugging
 
-### Formatter optimieren
+### Optimize Formatter
 
-Für große Dateien >10000 Zeilen:
+For large files >10000 lines:
 
 ```typescript
-// Regex pre-compile
+// Pre-compile regex
 private commentPattern = /\/\/.*$/gm;
 
 private formatComments(text: string): string {
@@ -176,7 +176,7 @@ private formatComments(text: string): string {
 }
 ```
 
-### Debug-Ausgabe
+### Debug Output
 
 ```typescript
 console.log('DEBUG: Input length:', text.length);
@@ -185,10 +185,10 @@ console.log('DEBUG: After indentation:', text);
 
 ## Support
 
-- **Issues**: Im Git-Repository erstellen
-- **Questions**: Kontakt mit TURM Team
-- **Ideas**: Feature-Requests willkommen!
+- **Issues**: Create in Git repository
+- **Questions**: Contact with development team
+- **Ideas**: Feature requests welcome!
 
-## Lizenz
+## License
 
-Siehe LICENSE Datei.
+See LICENSE file.

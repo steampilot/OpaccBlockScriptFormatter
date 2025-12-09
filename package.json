@@ -1,7 +1,7 @@
 {
   "name": "opacc-blockscript-formatter",
   "displayName": "Opacc BlockScript Formatter",
-  "description": "Automatischer Code-Formatter für BlockScript (.FBS/.FBL) Dateien mit Unterstützung für Opacc ToolChain",
+  "description": "Automatic code formatter for BlockScript (.FBS/.FBL) files with support for BlockScript syntax",
   "version": "0.1.0",
   "publisher": "steampilot",
   "author": "steampilot",

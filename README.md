@@ -1,99 +1,97 @@
 # Opacc BlockScript Formatter Extension
 
-Automatischer Code-Formatter für BlockScript-Dateien (.FBS/.FBL) in VS Code.
+Automatic code formatter for BlockScript files (.FBS/.FBL) in VS Code.
 
-Eine VS Code Extension zur automatischen Formatierung von Opacc BlockScript Code mit konsistenten Einrückungen, Operator-Spacing und Kommentar-Formatierung.
+A VS Code extension for automatic formatting of Opacc BlockScript code with consistent indentation, operator spacing, and comment formatting.
 
 **🔗 Repository**: https://github.com/steampilot/OpaccBlockScriptFormatter
-**🛠️ Entwickler**: steampilot
+**🛠️ Developer**: steampilot
 
 ## Features
 
-- 🎨 **Automatische Formatierung** via `Shift+Alt+F` (VS Code Standard)
-- 📏 **Intelligente Einrückung** (2 Spaces, konsistent)
-- ✨ **Spacing um Operatoren** (`:=`, `=`, `==`, `<>`, etc.)
-- 🔤 **Konsistente Kommentar-Formatierung** (`//` mit Space)
-- 📋 **Leerzeilen-Management** (zwischen Funktionen, keine doppelten Leerzeilen)
-- 🧩 **BlockScript-Syntax Support** (XRES, XTAB, XARR, XFAS)
-- 📝 **TextMate Grammar** für Syntax-Highlighting
+- 🎨 **Automatic Formatting** via `Shift+Alt+F` (VS Code Standard)
+- 📏 **Smart Indentation** (2 Spaces, consistent)
+- ✨ **Operator Spacing** (`:=`, `=`, `==`, `<>`, etc.)
+- 🔤 **Consistent Comment Formatting** (`//` with space)
+- 📋 **Blank Line Management** (between functions, no duplicate blank lines)
+- 🧩 **BlockScript Syntax Support** (XRES, XTAB, XARR, XFAS)
+- 📝 **TextMate Grammar** for syntax highlighting
 
-## Installation für Sysop
+## Installation
 
-### Option 1: Aus Repository klonen und bauen
+### Option 1: Clone repository and build
 ```bash
-git clone https://git01-lab.opacc.ch/turm/blockscript-formatter.git
+git clone https://github.com/steampilot/OpaccBlockScriptFormatter.git
 cd blockscript-formatter
 npm install
 npm run compile
 npm run package
 ```
 
-Das erstellt eine `.vsix`-Datei für die Distribution.
+This creates a `.vsix` file for distribution.
 
-### Option 2: Direkt als Entwicklungs-Extension installieren
+### Option 2: Install as development extension
 ```bash
 code --install-extension blockscript-formatter.vsix
 ```
 
-### Option 3: In VS Code Extensions-Verzeichnis platzieren
+### Option 3: Place in VS Code extensions directory
 ```
 Windows: %USERPROFILE%\.vscode\extensions\
 Linux: ~/.vscode/extensions/
 macOS: ~/.vscode/extensions/
 ```
 
-## Verwendung
+## Usage
 
-## Verwendung
+Open a BlockScript file (`.fbs` or `.fbl`) and press:
+- **Shift+Alt+F** to format the entire document
+- **Shift+Alt+F** with selection to format only the selected text
 
-Öffne eine BlockScript-Datei (`.fbs` oder `.fbl`) und drücke:
-- **Shift+Alt+F** zum Formatieren des gesamten Dokuments
-- **Shift+Alt+F** mit Selektion zum Formatieren nur des ausgewählten Bereichs
-
-## Projektstruktur
+## Project Structure
 
 ```
 ├── src/
-│   ├── extension.ts       # Haupteinstiegspunkt
-│   ├── formatter.ts       # Formatter-Logik
+│   ├── extension.ts       # Main entry point
+│   ├── formatter.ts       # Formatter logic
 │   └── test/
 ├── .vscode/
-│   ├── settings.json      # Extension-Einstellungen
-│   ├── launch.json        # Debug-Konfiguration
-│   └── tasks.json         # Build-Tasks
+│   ├── settings.json      # Extension settings
+│   ├── launch.json        # Debug configuration
+│   └── tasks.json         # Build tasks
 ├── package.json
 └── README.md
 ```
 
-## Formatierungs-Regeln
+## Formatting Rules
 
 ### Indentation
-- Standard: 2 Spaces pro Level
-- Konsistent in Funktionen, Schleifen, Bedingungen
-- Keine Tabs
+- Standard: 2 spaces per level
+- Consistent in functions, loops, conditionals
+- No tabs
 
 ### Spacing
-- Um Operatoren: ` := `, ` = `, ` == `, ` <> `
-- Nach Keywords: `if (`, `for (`, `while (`
-- Keine Spaces in leeren Klammern
+- Around operators: ` := `, ` = `, ` == `, ` <> `
+- After keywords: `if (`, `for (`, `while (`
+- No spaces in empty parentheses
 
-### Kommentare
-- `// Kommentar` mit Leerzeichen nach `//`
-- Mehrzeilig: `/* ... */`
-- Bevorzugte Sprache: Deutsch
+### Comments
+- `// Comment` with space after `//`
+- Multi-line: `/* ... */`
+- Language: English
 
 ## Git Workflow
 
 ```bash
-# Feature-Branch erstellen
-git checkout -b feature/neue-funktion
+# Create feature branch
+git checkout -b feature/new-feature
 
-# Änderungen committen
+# Commit changes
 git add .
-git commit -m "feat: Beschreibung der Änderung"
+git commit -m "feat: Description of change"
 
-# Zu dev pushen und PR erstellen
-git push origin feature/neue-funktion
+# Push and create pull request
+git push origin feature/new-feature
 ```
 
 ## Repository

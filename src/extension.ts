@@ -4,7 +4,7 @@ import { BlockScriptFormattingProvider } from './formatter';
 export function activate(context: vscode.ExtensionContext) {
   console.log('BlockScript Formatter Extension is now active!');
 
-  // Registriere den DocumentFormattingEditProvider für BlockScript
+  // Register the DocumentFormattingEditProvider for BlockScript
   const formatter = new BlockScriptFormattingProvider();
 
   context.subscriptions.push(
@@ -14,7 +14,7 @@ export function activate(context: vscode.ExtensionContext) {
     )
   );
 
-  // Registriere RangeFormattingEditProvider für Selections
+  // Register RangeFormattingEditProvider for selections
   context.subscriptions.push(
     vscode.languages.registerDocumentRangeFormattingEditProvider(
       { language: 'blockscript', scheme: 'file' },
@@ -22,7 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
     )
   );
 
-  // Registriere Command für manuelles Formatieren
+  // Register command for manual formatting
   let formatCommand = vscode.commands.registerCommand('blockscript-formatter.format', async () => {
     const editor = vscode.window.activeTextEditor;
 

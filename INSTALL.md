@@ -1,98 +1,83 @@
-# Installation & Integration in Opacc ToolChain
+# Installation & Setup
 
-## System-Anforderungen
+## System Requirements
 
-- **VS Code**: Version 1.80.0 oder höher
-- **Node.js**: v20.17.0 oder höher (für Build)
-- **npm**: v9.0.0 oder höher
+- **VS Code**: Version 1.80.0 or higher
+- **Node.js**: v20.17.0 or higher (for build)
+- **npm**: v9.0.0 or higher
 
-## Schritt-für-Schritt Installation
+## Step-by-Step Installation
 
-### 1. Repository klonen
+### 1. Clone Repository
 
 ```bash
-git clone https://git01-lab.opacc.ch/turm/blockscript-formatter.git
+git clone https://github.com/steampilot/OpaccBlockScriptFormatter.git
 cd blockscript-formatter
 ```
 
-### 2. Dependencies installieren
+### 2. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Extension bauen
+### 3. Build Extension
 
 ```bash
 npm run compile
 ```
 
-Falls VSIX-Datei benötigt wird (für Verteilung):
+If you need the VSIX file (for distribution):
 
 ```bash
 npm run package
 ```
 
-Dies erstellt `blockscript-formatter-0.1.0.vsix` im Projektverzeichnis.
+This creates `blockscript-formatter-0.1.0.vsix` in the project directory.
 
-### 4. Installation in VS Code
+### 4. Install in VS Code
 
-#### Option A: VSIX-Datei installieren (empfohlen für Distribution)
+#### Option A: Install VSIX file (recommended for distribution)
 
 ```bash
 code --install-extension blockscript-formatter-0.1.0.vsix
 ```
 
-#### Option B: Entwicklungs-Modus (lokal)
+#### Option B: Development Mode (local)
 
 ```bash
-# Im blockscript-formatter Verzeichnis
+# In blockscript-formatter directory
 npm run watch
 ```
 
-Dann in VS Code: `F5` zum Starten des Extension Development Host.
+Then in VS Code: Press `F5` to start the Extension Development Host.
 
-### 5. Überprüfung
+### 5. Verification
 
-1. Öffne eine `.fbs` oder `.fbl` Datei in VS Code
-2. Die Sprache sollte als "BlockScript" angezeigt werden
-3. Formatiere mit `Shift+Alt+F`
-4. Code sollte nach BlockScript-Regeln formatiert werden
+1. Open a `.fbs` or `.fbl` file in VS Code
+2. Language should display as "BlockScript"
+3. Format with `Shift+Alt+F`
+4. Code should be formatted according to BlockScript rules
 
-## Integration in Opacc ToolChain
+## Setup Configuration
 
-### Verteilung an Entwickler
+### Workspace Configuration
 
-1. **VSIX-Datei erstellen**:
-   ```bash
-   npm run package
-   ```
-
-2. **Datei bereitstellen** (z.B. in Opacc Software Repository):
-   - `blockscript-formatter-0.1.0.vsix`
-
-3. **Installation via Script** (optional):
-   ```bash
-   code --install-extension blockscript-formatter-0.1.0.vsix --force
-   ```
-
-### Workspace-spezifische Konfiguration
-
-Für standardisierte Formatierungsregeln in der Opacc ToolChain (`.vscode/settings.json` im Workspace):
+For standardized formatting rules (`.vscode/settings.json` in your workspace):
 
 ```json
 {
   "[blockscript]": {
-    "editor.defaultFormatter": "TURM.turm-blockscript-formatter",
+    "editor.defaultFormatter": "steampilot.opacc-blockscript-formatter",
     "editor.formatOnSave": true,
     "editor.rulers": [80, 100]
   }
 }
 ```
 
-## Updates & Wartung
+## Updates & Maintenance
 
-### Update durchführen
+### Perform Update
 
 ```bash
 cd blockscript-formatter
@@ -102,37 +87,37 @@ npm run compile
 npm run package
 ```
 
-Neue VSIX-Datei erneut an Entwickler verteilen.
+Redistribute the new VSIX file to users.
 
-### Neue Formatter-Regeln hinzufügen
+### Add New Formatter Rules
 
-1. Änderungen in `src/formatter.ts` vornehmen
-2. Kompilieren: `npm run compile`
-3. Testen: F5 im Development Host
-4. Package erstellen: `npm run package`
+1. Make changes in `src/formatter.ts`
+2. Compile: `npm run compile`
+3. Test: Press F5 in Development Host
+4. Create package: `npm run package`
 
-## Support & Problembehebung
+## Support & Troubleshooting
 
-### Extension wird nicht erkannt
+### Extension Not Recognized
 
-- **Überprüfung**: File Explorer → BlockScript-Datei öffnen → Sprache sollte "BlockScript" sein
-- **Lösung**: `npm run compile` neu ausführen und VS Code neu starten
+- **Check**: File Explorer → Open BlockScript file → Language should show "BlockScript"
+- **Solution**: Run `npm run compile` again and restart VS Code
 
-### Formatierung funktioniert nicht
+### Formatting Not Working
 
-- `Shift+Alt+F` versuchen (Standard VS Code Format-Shortcut)
-- VS Code Output anschauen: View → Output → "BlockScript Formatter Extension"
-- Bei Bedarf Debug-Modus starten (F5 im Development Host)
+- Try `Shift+Alt+F` (VS Code standard format shortcut)
+- Check VS Code Output: View → Output → "BlockScript Formatter Extension"
+- Start debug mode if needed (press F5 in Development Host)
 
-### Performance-Issues
+### Performance Issues
 
-Falls Formatter langsam läuft:
-- `src/formatter.ts` optimieren
-- Tests mit großen Dateien durchführen
-- Console-Logs hinzufügen für Profiling
+If formatter runs slowly:
+- Optimize `src/formatter.ts`
+- Test with large files
+- Add console logs for profiling
 
-## Kontakt & Entwicklung
+## Contact & Development
 
-- **Repository**: https://git01-lab.opacc.ch/turm/blockscript-formatter
-- **Issue Tracking**: [Git Repository Issues]
-- **Lead Developer**: TURM Team
+- **Repository**: https://github.com/steampilot/OpaccBlockScriptFormatter
+- **Issue Tracking**: [GitHub Repository Issues]
+- **Lead Developer**: steampilot

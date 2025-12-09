@@ -2,49 +2,49 @@ import * as vscode from 'vscode';
 
 export class BlockScriptFormatter {
   /**
-   * Formatiert BlockScript Code
-   * @param code Der zu formatierende Code
-   * @returns Der formatierte Code
+   * Formats BlockScript code
+   * @param code The code to format
+   * @returns The formatted code
    */
   public static format(code: string): string {
     let lines = code.split('\n');
 
-    // Schritt 1: Entferne Trailing Whitespace
+    // Step 1: Remove trailing whitespace
     lines = lines.map(line => line.trimEnd());
 
-    // Schritt 2: Normalisiere Tabs zu Spaces (2 Spaces)
+    // Step 2: Normalize tabs to spaces (2 spaces)
     lines = lines.map(line => this.normalizeTabs(line));
 
-    // Schritt 3: Bereinige mehrfache Leerzeilen
+    // Step 3: Clean multiple blank lines
     lines = this.cleanMultipleBlankLines(lines);
 
-    // Schritt 4: Formatiere Spacing um Operatoren
+    // Step 4: Format spacing around operators
     lines = lines.map(line => this.formatOperatorSpacing(line));
 
-    // Schritt 5: Formatiere Keywords
+    // Step 5: Format keywords
     lines = lines.map(line => this.formatKeywordSpacing(line));
 
-    // Schritt 6: Formatiere Kommentare
+    // Step 6: Format comments
     lines = lines.map(line => this.formatComments(line));
 
-    // Schritt 7: Manage Leerzeilen vor/nach Funktionen
+    // Step 7: Manage blank lines before/after functions
     lines = this.manageFunctionSpacing(lines);
 
-    // Schritt 8: Korrigiere Einrückung
+    // Step 8: Fix indentation
     lines = lines.map((line, index) => this.fixIndentation(line, index, lines));
 
     return lines.join('\n');
   }
 
   /**
-   * Konvertiert Tabs zu Spaces (2 Spaces pro Tab)
+   * Converts tabs to spaces (2 spaces per tab)
    */
   private static normalizeTabs(line: string): string {
     return line.replace(/\t/g, '  ');
   }
 
   /**
-   * Bereinigt mehrfache Leerzeilen (maximal eine)
+   * Cleans multiple blank lines (maximum one)
    */
   private static cleanMultipleBlankLines(lines: string[]): string[] {
     const result: string[] = [];
@@ -64,44 +64,44 @@ export class BlockScriptFormatter {
   }
 
   /**
-   * Formatiert Spacing um Operatoren
+   * Formats spacing around operators
    * := = == <> != < > <= >=
    */
   private static formatOperatorSpacing(line: string): string {
-    // Ignoriere Kommentare
+    // Ignore comments
     const commentIndex = line.indexOf('//');
     const codepart = commentIndex !== -1 ? line.substring(0, commentIndex) : line;
     const commentPart = commentIndex !== -1 ? line.substring(commentIndex) : '';
 
     let result = codepart;
 
-    // Formatiere := (Assignment)
+    // Format := (assignment)
     result = result.replace(/\s*:=\s*/g, ' := ');
 
-    // Formatiere = (nur wenn nicht ==, !=, <=, >=)
+    // Format = (only if not ==, !=, <=, >=)
     result = result.replace(/([^=!<>])\s*=\s*(?!=)/g, '$1 = ');
 
-    // Formatiere ==
+    // Format ==
     result = result.replace(/\s*==\s*/g, ' == ');
 
-    // Formatiere <>
+    // Format <>
     result = result.replace(/\s*<>\s*/g, ' <> ');
 
-    // Formatiere !=
+    // Format !=
     result = result.replace(/\s*!=\s*/g, ' != ');
 
-    // Formatiere Vergleichsoperatoren
+    // Format comparison operators
     result = result.replace(/\s*(<=|>=)\s*/g, ' $1 ');
     result = result.replace(/\s*(<|>)(?!=)/g, ' $1 ');
 
-    // Entferne extra Spaces am Anfang
+    // Remove extra spaces at the beginning
     result = result.trimStart();
 
     return result + commentPart;
   }
 
   /**
-   * Formatiert Spacing nach Keywords
+   * Formats spacing after keywords
    */
   private static formatKeywordSpacing(line: string): string {
     const commentIndex = line.indexOf('//');
@@ -110,7 +110,7 @@ export class BlockScriptFormatter {
 
     let result = codepart;
 
-    // Keywords mit öffnender Klammer sollten Space haben
+    // Keywords with opening parenthesis should have space
     const keywords = ['if', 'for', 'while', 'switch', 'catch', 'function'];
 
     for (const keyword of keywords) {
@@ -122,7 +122,7 @@ export class BlockScriptFormatter {
   }
 
   /**
-   * Formatiert Kommentare: "// Text" statt "//Text"
+   * Formats comments: "// Text" instead of "//Text"
    */
   private static formatComments(line: string): string {
     // Formatiere // Kommentare
@@ -130,7 +130,7 @@ export class BlockScriptFormatter {
   }
 
   /**
-   * Managed Leerzeilen vor/nach Funktionsdefinitionen
+   * Manages blank lines before/after function definitions
    */
   private static manageFunctionSpacing(lines: string[]): string[] {
     const result: string[] = [];
@@ -142,14 +142,14 @@ export class BlockScriptFormatter {
 
       result.push(currentLine);
 
-      // Wenn aktuelle Zeile eine Funktion startet und nächste nicht leer ist
+      // If current line starts function and next is not empty
       if (this.isFunctionDefinition(currentLine) && nextLine.trim() !== '' && i + 1 < lines.length) {
-        // Nächste Leerzeile wird hinzugefügt, wenn nicht vorhanden
+        // Add blank line if not present
       }
 
-      // Wenn aktuelle Zeile leer und nächste Funktion ist
+      // If current line is empty and next is function
       if (currentLine.trim() === '' && nextLine.trim() !== '' && this.isFunctionDefinition(nextLine)) {
-        // Behalte eine Leerzeile
+        // Keep blank line
       }
     }
 
@@ -157,7 +157,7 @@ export class BlockScriptFormatter {
   }
 
   /**
-   * Checkt ob Zeile eine Funktionsdefinition ist
+   * Checks if line is a function definition
    */
   private static isFunctionDefinition(line: string): boolean {
     const trimmed = line.trim();
@@ -165,20 +165,20 @@ export class BlockScriptFormatter {
   }
 
   /**
-   * Korrigiert Einrückung basierend auf Klammern-Ebene
+   * Fixes indentation based on bracket depth
    */
   private static fixIndentation(line: string, index: number, lines: string[]): string {
     const trimmed = line.trim();
 
-    // Leere Zeilen nicht einrücken
+    // Don't indent empty lines
     if (trimmed === '') {
       return '';
     }
 
-    // Berechne Einrückungs-Level basierend auf öffnenden/schließenden Klammern
+    // Calculate indentation level based on opening/closing brackets
     let indentLevel = this.calculateIndentLevel(index, lines);
 
-    // Korrigiere für schließende Klammern am Anfang
+    // Correct for closing brackets at the beginning
     if (trimmed.startsWith('}') || trimmed.startsWith(']') || trimmed.startsWith(')')) {
       indentLevel = Math.max(0, indentLevel - 1);
     }
@@ -187,7 +187,7 @@ export class BlockScriptFormatter {
   }
 
   /**
-   * Berechnet Einrückungs-Level für eine Zeile
+   * Calculates indentation level for a line
    */
   private static calculateIndentLevel(lineIndex: number, lines: string[]): number {
     let level = 0;
@@ -204,7 +204,7 @@ export class BlockScriptFormatter {
 }
 
 /**
- * DocumentFormattingEditProvider für BlockScript
+ * DocumentFormattingEditProvider for BlockScript
  */
 export class BlockScriptFormattingProvider implements vscode.DocumentFormattingEditProvider {
   provideDocumentFormattingEdits(
@@ -233,7 +233,7 @@ export class BlockScriptFormattingProvider implements vscode.DocumentFormattingE
   }
 
   /**
-   * Formatiert einen Bereich von Code
+   * Formats a range of code
    */
   provideDocumentRangeFormattingEdits(
     document: vscode.TextDocument,
